@@ -27,3 +27,19 @@ export const ImageHeroes = styled.img`
 export const FirstP = styled.p`
     font-size: 20px;
 `
+
+export const DivDosCards = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+`
+
+export const DivCTA = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+`

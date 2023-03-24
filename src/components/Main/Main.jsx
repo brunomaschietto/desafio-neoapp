@@ -28,7 +28,7 @@ const Main = () => {
       </DivInternaUm>
       <DivInternaDois>
         <FirstP>
-          Temos diversos quadrinhos, dos mais raros aos mais comuns
+          Diversos quadrinhos: dos mais raros aos mais comuns
         </FirstP>
         <div>
           <ImageHeroes

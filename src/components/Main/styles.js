@@ -6,7 +6,7 @@ export const DivMain = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 80px;
+  gap: 30px;
 `;
 
 export const DivInternaUm = styled.div`
@@ -59,6 +59,7 @@ export const InputPesquisaQuadrinhos = styled.input`
   color: black;
   font-size: 16px;
   box-shadow: none;
+  padding-left: 12px;
 `;
 
 export const DivAmarelaEscura = styled.div`

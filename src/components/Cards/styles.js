@@ -34,10 +34,10 @@ export const ImgDoCard = styled.img`
 `;
 
 export const BotaoDoCard = styled.button`
-  width: 80px;
+  width: 100px;
   height: 25px;
   background-color: #fac954;
-  border-radius: 20px;
+  border-radius: 12px;
   cursor: pointer;
 `;
 
@@ -47,4 +47,8 @@ export const DivInfosCard = styled.div`
   gap: 10px;
   justify-content: center;
   align-items: center;
+  h5 {
+    width: 250px;
+    height: 30px;
+  }
 `;

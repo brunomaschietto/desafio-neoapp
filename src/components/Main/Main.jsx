@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import {
+  BotaoTrocaPagina,
   DivAmarelaEscura,
+  DivBotoesDePagina,
   DivCTA,
   DivDosCards,
   DivInternaDois,
@@ -61,27 +63,25 @@ const Main = () => {
               return <Cards key={comic.id} comic={comic} />;
             })}
         </DivDosCards>
-        <div>
-          <button disabled={count === 0} onClick={() => setCount(count - 1)}>
-            Prev. Page
-          </button>
+        <DivBotoesDePagina>
+          <BotaoTrocaPagina hidden={count === 0} onClick={() => setCount(count - 1)}>
+            {count}
+          </BotaoTrocaPagina>
           <p>{count + 1}</p>
-          <button
-            disabled={(count + 1) * 12 >= pagesNumber}
+          <BotaoTrocaPagina
+            hidden={(count + 1) * 12 >= pagesNumber}
             onClick={() => setCount(count + 1)}
           >
-            Next Page
-          </button>
-        </div>
+            {count + 2}
+          </BotaoTrocaPagina>
+          <BotaoTrocaPagina
+            hidden={(count + 2) * 12 >= pagesNumber}
+            onClick={() => setCount(count + 2)}
+          >
+            {count + 3}
+          </BotaoTrocaPagina>
+        </DivBotoesDePagina>
       </DivCTA>
-      <DivAmarelaEscura>
-        <h1>Promoções</h1>
-      </DivAmarelaEscura>
-      <DivDosCards>
-        {comics.map((comic) => {
-          return <Cards key={comic.id} comic={comic} />;
-        })}
-      </DivDosCards>
     </DivMain>
   );
 };

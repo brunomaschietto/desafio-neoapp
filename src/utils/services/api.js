@@ -9,6 +9,7 @@ const time = Number(new Date());
 const marvelhash = md5(time+privatekey+publickey);
 console.log(marvelhash)
 
+
 const api = axios.create({
   baseURL: urlbase,
   params: {
@@ -17,5 +18,4 @@ const api = axios.create({
     hash: marvelhash,
   },
 });
-
 export default api;

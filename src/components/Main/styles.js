@@ -72,3 +72,18 @@ export const DivAmarelaEscura = styled.div`
     align-items: center;
     justify-content: center;
 `
+
+export const DivBotoesDePagina = styled.div`
+  display: flex;
+  gap: 10px;
+`
+
+export const BotaoTrocaPagina = styled.button`
+  background-color: black;
+  color: white;
+  width: 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  
+`

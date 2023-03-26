@@ -25,6 +25,7 @@ export const ImgLogo = styled.img`
 
 export const LinkComics = styled.a`
   font-size: 24px;
+  cursor: pointer;
 `;
 
 export const DivCarrinho = styled.div`

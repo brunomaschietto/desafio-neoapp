@@ -1,13 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
-import { GlobalContext } from "../../contexts/GlobalContext";
 import api from "../../utils/services/api";
+import { DivComInfos, DivContainerInfos } from "./styles";
 
 const InfosPage = () => {
-  const context = useContext(GlobalContext);
-  const {comicsInfos, setComicsInfos} = context
-  const params = useParams()
+  // Estado pra página de informação de quadrinhos
+  const [comicsInfos, setComicsInfos] = useState();
+  const params = useParams();
 
   useEffect(() => {
     fetchComicInfo();
@@ -15,18 +15,27 @@ const InfosPage = () => {
 
   const fetchComicInfo = async () => {
     try {
-        const response = await api.get(`/v1/public/comics/${params.id}`);
-        console.log(response.data.data.results);
-        setComicsInfos(response.data.data.results);
-      } catch (error) {
-        console.log(error);
-      }
-    
+      const response = await api.get(`/v1/public/comics/${params.id}`);
+      console.log(response)
+      setComicsInfos(response.data.data.results[0]);
+    } catch (error) {
+      console.log(error);
+    }
   };
-  
-  return <div>
-    <Header />
-  </div>;
+  return (
+    <>
+      <Header />
+      <DivContainerInfos>
+        <DivComInfos>
+          <img
+            src={`${comicsInfos?.thumbnail.path}.${comicsInfos?.thumbnail.extension}`}
+            alt={comicsInfos?.title}
+          />
+          <h1>{comicsInfos?.title}</h1>
+        </DivComInfos>
+      </DivContainerInfos>
+    </>
+  );
 };
 
 export default InfosPage;

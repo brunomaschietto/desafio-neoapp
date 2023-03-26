@@ -16,16 +16,17 @@ import logoUsuario from "../../assets/logoUsuario.png";
 import iconeCarrinho from "../../assets/iconeCarrinho.png";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { useNavigate } from "react-router-dom";
-import { goToBuyPage } from "../../routes/coordinator";
+import { goToBuyPage, goToHomePage } from "../../routes/coordinator";
 
 const Header = () => {
   const context = useContext(GlobalContext)
   const navigate = useNavigate()
   const {compra} = context
+  // console.log(compra)
   return (
     <MainHeader>
       <DivLogo>
-        <LinkComics>Comics</LinkComics>
+        <LinkComics onClick={() => goToHomePage(navigate)}>Comics</LinkComics>
       </DivLogo>
       <DivLogo>
         <ImgLogo src={logoMarvelComic} alt="Logo da Marvel Comics" />
@@ -37,7 +38,7 @@ const Header = () => {
         </DivUsuario>
         <DivCarrrinhoEQtd>
           <span><LogosHeader src={iconeCarrinho} onClick={() => goToBuyPage(navigate)}/></span>
-          <SpanQtd>{compra[0].quantidadeTotal}</SpanQtd>
+          <SpanQtd>{compra.quantidadeTotal}</SpanQtd>
         </DivCarrrinhoEQtd>
       </DivCarrinho>
     </MainHeader>

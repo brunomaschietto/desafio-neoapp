@@ -8,13 +8,14 @@ const Cards = (props) => {
   const context = useContext(GlobalContext)
   const {enviarCarrinho} = context
   const {comic} = props
+  
   const formataDinheiro = () => {
-    if(comic.prices[0].price === 0) {
-      return comic.prices[0].price + 21.50
+    if (comic.prices[0].price === 0) {
+      return comic.prices[0].price + 21.5;
     } else {
-      return (comic.prices[0].price* 5).toFixed(2)
+      return (comic.prices[0].price * 5).toFixed(2);
     }
-  }
+  };
   const navigate = useNavigate()
   return (
     <Card>

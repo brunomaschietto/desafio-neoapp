@@ -12,6 +12,12 @@ export const DivContainerInfos = styled.div`
 export const DivComInfos = styled.div`
     /* width: 700px;
     height: 400px; */
-    background-color: white;
     display: flex;
+    gap: 50px;
+`
+
+export const DivInternaInfos = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
 `

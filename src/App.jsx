@@ -39,7 +39,7 @@ const App = () => {
       const response = await api.get(
         `/v1/public/comics?limit=10&offset=${count * 10}`
       );
-      const dados = response.data.data.results
+      const dados = response.data.data.results;
       const lenArray = dados.length;
       const qrdPercent = lenArray * 0.1;
       for (let index = 0; index < dados.length; index++) {

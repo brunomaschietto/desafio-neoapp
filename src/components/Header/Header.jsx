@@ -19,10 +19,14 @@ import { useNavigate } from "react-router-dom";
 import { goToBuyPage, goToHomePage } from "../../routes/coordinator";
 
 const Header = () => {
-  const context = useContext(GlobalContext)
-  const navigate = useNavigate()
-  const {compra} = context
-  // console.log(compra)
+  const context = useContext(GlobalContext);
+  const navigate = useNavigate();
+  const { carrinho } = context;
+  const quantidadeTotal = carrinho.reduce(
+    (acumulado, item) => acumulado + item.quantidadeTotal,
+    0
+  );
+  console.log(carrinho);
   return (
     <MainHeader>
       <DivLogo>
@@ -37,8 +41,13 @@ const Header = () => {
           <p>Olá, usuário</p>
         </DivUsuario>
         <DivCarrrinhoEQtd>
-          <span><LogosHeader src={iconeCarrinho} onClick={() => goToBuyPage(navigate)}/></span>
-          <SpanQtd>{compra.quantidadeTotal}</SpanQtd>
+          <span>
+            <LogosHeader
+              src={iconeCarrinho}
+              onClick={() => goToBuyPage(navigate)}
+            />
+          </span>
+          <SpanQtd>{quantidadeTotal}</SpanQtd>
         </DivCarrrinhoEQtd>
       </DivCarrinho>
     </MainHeader>

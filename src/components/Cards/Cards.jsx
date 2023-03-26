@@ -6,16 +6,10 @@ import { BotaoDoCard, Card, CardBody, CardFooter, DivInfosCard, ImgDoCard } from
 
 const Cards = (props) => {
   const context = useContext(GlobalContext)
-  const {enviarCarrinho} = context
+  const {enviarCarrinho, formataDinheiro} = context
   const {comic} = props
   
-  const formataDinheiro = () => {
-    if (comic.prices[0].price === 0) {
-      return comic.prices[0].price + 21.5;
-    } else {
-      return (comic.prices[0].price * 5).toFixed(2);
-    }
-  };
+  
   const navigate = useNavigate()
   return (
     <Card>
@@ -24,7 +18,7 @@ const Cards = (props) => {
         <DivInfosCard>
           <h5>{comic.title}</h5>
           <p>{comic.tipo}</p>
-          <p>R$ {formataDinheiro()}</p>
+          <p>R$ {formataDinheiro(comic)}</p>
         </DivInfosCard>
       </CardBody> 
       <CardFooter>

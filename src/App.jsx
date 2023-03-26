@@ -15,20 +15,10 @@ const App = () => {
   const [pagesNumber, setPagesNumber] = useState(0);
   // Estado para armazenar os itens do carrinho
   const [carrinho, setCarrinho] = useState([]);
-  // Estado para armazenar as informações gerais do pedido do cliente
-  const [compra, setCompra] = useState({
-    itens: [...carrinho],
-    desconto: 0,
-    quantidadeTotal: 0,
-    itensTotalCompra: 0,
-    compraTotal: 0,
-  });
   // Estado para armazenar o cupom de desconto
   const [cupom, setCupom] = useState("");
   // Estado para armazenar se esta usando cupom ou não
   const [usandoCupom, setUsandoCupom] = useState(false);
-  // Estado para armazenar a quantidade total do carrinho
-  const [qtdCarrinho, setQtdCarrinho] = useState(0);
 
   useEffect(() => {
     fetchComics();
@@ -63,9 +53,6 @@ const App = () => {
 
   const enviarCarrinho = (id) => {
     const i = carrinho.findIndex((item) => item.id === id);
-    const novaCompra = { ...compra };
-    novaCompra.quantidadeTotal += 1;
-    setCompra(novaCompra);
     if (i !== -1) {
       const novoCarrinho = [...carrinho];
       // console.log(novoCarrinho);
@@ -90,35 +77,31 @@ const App = () => {
 
   const onClickDiminuirQuantidade = (id) => {
     const i = carrinho.findIndex((item) => item.id === id);
-    carrinho.map((comic) => {
-      if (comic.quantidadeTotal > 1) {
-        const novoCarrinho = [...carrinho];
-        novoCarrinho[i] = {
-          ...novoCarrinho[i],
-          quantidadeTotal: novoCarrinho[i].quantidadeTotal - 1,
-        };
-        setCarrinho(novoCarrinho);
-      } else {
-        const carrinhoSemItem = carrinho.filter((item) => item.id !== id);
-        setCarrinho(carrinhoSemItem);
-      }
-    });
+    if (carrinho[i].quantidadeTotal > 1) {
+      const novoCarrinho = [...carrinho];
+      novoCarrinho[i] = {
+        ...novoCarrinho[i],
+        quantidadeTotal: novoCarrinho[i].quantidadeTotal - 1,
+      };
+      setCarrinho(novoCarrinho);
+    } else {
+      const carrinhoSemItem = carrinho.filter((item) => item.id !== id);
+      setCarrinho(carrinhoSemItem);
+    }
   };
 
   const onClickAumentarQuantidade = (id) => {
     const i = carrinho.findIndex((item) => item.id === id);
-    carrinho.map((comic) => {
-      if (comic.quantidadeTotal < 10) {
-        const novoCarrinho = [...carrinho];
-        novoCarrinho[i] = {
-          ...novoCarrinho[i],
-          quantidadeTotal: novoCarrinho[i].quantidadeTotal + 1,
-        };
-        setCarrinho(novoCarrinho);
-      } else {
-        alert("Só é permitido comprar 10 itens de cada produto por pessoa");
-      }
-    });
+    if (carrinho[i].quantidadeTotal < 10) {
+      const novoCarrinho = [...carrinho];
+      novoCarrinho[i] = {
+        ...novoCarrinho[i],
+        quantidadeTotal: novoCarrinho[i].quantidadeTotal + 1,
+      };
+      setCarrinho(novoCarrinho);
+    } else {
+      alert("Só é permitido comprar 10 itens de cada produto por pessoa");
+    }
   };
 
   const adicionarCupom = () => {
@@ -130,6 +113,18 @@ const App = () => {
     }
   };
 
+  const formataDinheiro = (item) => {
+    if (item.prices[0].price === 0) {
+      return item.prices[0].price + 21.5;
+    } else {
+      return (item.prices[0].price * 5).toFixed(2);
+    }
+  };
+  const concluirPedido = () => {
+    setCarrinho([]);
+    setUsandoCupom(false);
+  };
+
   const context = {
     comics,
     setComics,
@@ -138,13 +133,18 @@ const App = () => {
     count,
     setCount,
     pagesNumber,
-    compra,
-    setCompra,
+    carrinho,
+    setCarrinho,
+    cupom,
+    setCupom,
+    usandoCupom,
+    concluirPedido,
     enviarCarrinho,
     onClickDelete,
     onClickDiminuirQuantidade,
     onClickAumentarQuantidade,
     adicionarCupom,
+    formataDinheiro,
   };
 
   return (

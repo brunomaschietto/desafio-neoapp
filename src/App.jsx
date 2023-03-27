@@ -123,6 +123,7 @@ const App = () => {
   const concluirPedido = () => {
     setCarrinho([]);
     setUsandoCupom(false);
+    alert("Pedido finalizado com sucesso!")
   };
 
   const context = {

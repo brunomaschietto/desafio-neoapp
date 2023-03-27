@@ -30,19 +30,29 @@ const Header = () => {
   return (
     <MainHeader>
       <DivLogo>
-        <LinkComics onClick={() => goToHomePage(navigate)}>Comics</LinkComics>
+        <LinkComics
+          data-cy="textoComics"
+          onClick={() => goToHomePage(navigate)}
+        >
+          Comics
+        </LinkComics>
       </DivLogo>
       <DivLogo>
-        <ImgLogo src={logoMarvelComic} alt="Logo da Marvel Comics" />
+        <ImgLogo
+          data-cy="logo"
+          src={logoMarvelComic}
+          alt="Logo da Marvel Comics"
+        />
       </DivLogo>
       <DivCarrinho>
         <DivUsuario>
-          <LogosHeader src={logoUsuario} />
+          <LogosHeader data-cy="logoUsuario" src={logoUsuario} />
           <p>Olá, usuário</p>
         </DivUsuario>
         <DivCarrrinhoEQtd>
           <span>
             <LogosHeader
+              data-cy="logoCarrinho"
               src={iconeCarrinho}
               onClick={() => goToBuyPage(navigate)}
             />

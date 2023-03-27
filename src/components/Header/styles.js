@@ -48,16 +48,19 @@ export const DivUsuario = styled.div`
   align-items: center;
   width: 50px;
   gap: 5px;
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 
 export const LogosHeader = styled.img`
-    height: 48px;
-    width: 48px;
-`
+  height: 48px;
+  width: 48px;
+`;
 
 export const DivCarrrinhoEQtd = styled.div`
   position: relative;
-`
+`;
 
 export const SpanQtd = styled.span`
   position: absolute;
@@ -66,4 +69,4 @@ export const SpanQtd = styled.span`
   width: 20px;
   border: 1px solid red;
   border-radius: 12px;
-`
+`;

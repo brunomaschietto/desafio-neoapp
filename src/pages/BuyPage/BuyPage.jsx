@@ -12,15 +12,19 @@ import {
   DivCardCarrinho,
   DivContainerCards,
   DivForm,
+  DivInternaCard,
   DivInternaForm,
   DivLixeira,
   DivPagamento,
   DivPai,
   DivPreco,
   DivTodosBotoes,
+  H2Titulo,
   ImgCardCarrinho,
   ImgLixeira,
   InputCupom,
+  PCard,
+  PInfos,
 } from "./styles";
 
 const BuyPage = () => {
@@ -55,10 +59,10 @@ const BuyPage = () => {
               <ImgCardCarrinho
                 src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
               />
-              <div>
+              <DivInternaCard>
                 <div>
-                  <h2>{item.title}</h2>
-                  <p>{item.tipo}</p>
+                  <H2Titulo>{item.title}</H2Titulo>
+                  <PCard>{item.tipo}</PCard>
                 </div>
                 <DivBotoesEPreco>
                   <DivTodosBotoes>
@@ -68,7 +72,7 @@ const BuyPage = () => {
                       >
                         -
                       </BotaoAddOuDim>
-                      <p>{item.quantidadeTotal}</p>
+                      <PInfos>{item.quantidadeTotal}</PInfos>
                       <BotaoAddOuDim
                         onClick={() => onClickAumentarQuantidade(item.id)}
                       >
@@ -80,7 +84,7 @@ const BuyPage = () => {
                         onClick={() => onClickDelete(item.id)}
                         src={iconeLixeira}
                       />
-                      <p onClick={() => onClickDelete(item.id)}>Delete</p>
+                      <PInfos onClick={() => onClickDelete(item.id)}>Delete</PInfos>
                     </DivLixeira>
                   </DivTodosBotoes>
                   <DivPreco>
@@ -88,7 +92,7 @@ const BuyPage = () => {
                     <p>{formataDinheiro(item)}</p>
                   </DivPreco>
                 </DivBotoesEPreco>
-              </div>
+              </DivInternaCard>
             </DivCardCarrinho>
           ))}
         </DivContainerCards>

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { ImgDoCard } from "../../components/Cards/styles";
 import Header from "../../components/Header/Header";
 import api from "../../utils/services/api";
-import { DivComInfos, DivContainerInfos, DivInternaInfos } from "./styles";
+import { DivComInfos, DivContainerInfos, DivInternaInfos, ImgCardInfos } from "./styles";
 
 const InfosPage = () => {
   // Estado pra página de informação de quadrinhos
@@ -36,7 +35,7 @@ const InfosPage = () => {
       <Header />
       <DivContainerInfos>
         <DivComInfos>
-          <ImgDoCard
+          <ImgCardInfos
             src={`${comicsInfos?.thumbnail.path}.${comicsInfos?.thumbnail.extension}`}
             alt={comicsInfos?.title}
           />

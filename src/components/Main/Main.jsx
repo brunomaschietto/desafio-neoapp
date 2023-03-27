@@ -5,6 +5,7 @@ import {
   DivBotoesDePagina,
   DivCTA,
   DivDosCards,
+  DivImgMain,
   DivInternaDois,
   DivInternaUm,
   DivMain,
@@ -32,7 +33,7 @@ const Main = () => {
         <FirstP>
           Diversos quadrinhos: dos mais raros aos mais comuns
         </FirstP>
-        <div>
+        <DivImgMain>
           <ImageHeroes
             src={metadeEsquerda}
             alt="Imagem dos personagens da Marvel"
@@ -41,7 +42,7 @@ const Main = () => {
             src={metadeDireita}
             alt="Imagem dos personagens da Marvel"
           />
-        </div>
+        </DivImgMain>
       </DivInternaDois>
       <DivCTA>
         <DivAmarelaEscura>

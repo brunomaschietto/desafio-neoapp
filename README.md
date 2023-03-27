@@ -29,7 +29,7 @@ O Desafio NeoApp consiste em desenvolver um E-Commerce de Quadrinhos da Marvel, 
 ![pagina-carrinho](./src/assets/paginaCarrinho.png)
 
 ## 🎯 **Demonstração**
-[Link demonstração](site)
+[Link demonstração](https://desafio-neoapp.vercel.app/)
 
 ## 👨🏻‍🏫 **Passos**
 
